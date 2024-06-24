@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservierungssystem</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/styles.css' %}">
+</head>
+<body class="dark-mode">
+<header>
+    <h1>Willkommen im Restaurant Reservierungssystem</h1>
+</header>
+<nav>
+    <a href="/home">Startseite</a>
+    <a href="/menu">Speisekarte</a>
+    <a href="/reservations">Reservierungen</a>
+    <a href="/contact">Kontakt</a>
+</nav>
+<main>
+    <h2>Genießen Sie ein unvergleichliches Esserlebnis</h2>
+    <p>Reservieren Sie jetzt einen Tisch in unserem Restaurant und erleben Sie kulinarische Köstlichkeiten.</p>
+    <a href="/reservations" class="btn">Reservierung vornehmen</a>
+
+    <div class="table-container">
+        <h3>Verfügbare Tische</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Tisch Nummer</th>
+                <th>Reservieren</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for table in tables %}
+            <tr>
+                <td>Tisch {{ table }}</td>
+                <td><a href="/reservations/{{ table }}" class="btn">Jetzt reservieren</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 Restaurant Reservierungssystem. Alle Rechte vorbehalten.</p>
+</footer>
+</body>
+</html>
